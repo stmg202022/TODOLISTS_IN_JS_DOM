@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./addToDo.js"></script>
+    <script src="./script.js"></script>
+  </head>
+  <body>
+    <div id="deleteContainer">
+      <div id="pupUpCard">
+        <h2>ARE YOU SURE WANT TO DELETE IT ?</h2>
+
+        <div id="sureButton">
+          <button id="no__btn" class="btn__complete">NO</button>
+          <button id="yes__btn" class="btn__danger">YES</button>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div id="todo">
+        <div id="card">
+          <div class="todo__head">
+            <h1 class="todo__head__header">Todo Lists</h1>
+            <input
+              id="search"
+              type="search"
+              placeholder="SEARCH YOUR TODO..."
+              class="p-3 border-gray-200 shadow-sm rounded-md border transition duration-300 focus:border focus:border-dotted focus:outline-none hover:border hover:border-blue-300"
+            />
+          </div>
+
+          <div id="todo__result">
+            <div class="todo__result__item">
+              <div
+                id="circle__total__lists"
+                class="circle circle__primary"
+              ></div>
+              <span class="todo__result__text">Total</span>
+            </div>
+
+            <div class="todo__result__item">
+              <div
+                id="circle__completed__lists"
+                class="circle circle__secondary"
+              ></div>
+              <span class="todo__result__text">Completed</span>
+            </div>
+
+            <div class="todo__result__item">
+              <div
+                id="circle__unCompleted__lists"
+                class="circle circle__ternary"
+              ></div>
+              <span class="todo__result__text">Remaining</span>
+            </div>
+          </div>
+
+          <div id="inputToDo">
+            <form action="" id="inputForm">
+              <input
+                type="text"
+                id="toDoInput"
+                placeholder="ADD YOUR TODO..."
+                class="p-3 border-gray-200 shadow-sm rounded-md border transition duration-300 focus:border focus:border-dotted focus:outline-none hover:border hover:border-blue-300"
+              />
+              <button id="addBtn" class="btn btn--outline" type="submit">
+                Add/ToDo
+              </button>
+            </form>
+          </div>
+
+          <div id="no__to__do" class="card">
+            <h2 id="result__heading">COMPLETED :) !!</h2>
+          </div>
+
+          <div id="notFound" class="card">
+            <h2 id="result__heading">OOPs!!! NOT FOUND...</h2>
+          </div>
+
+          <div id="todoLists">
+            <ul id="todoList_lists"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
