@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const inputForm = document.getElementById("inputForm");
   const searchInput = document.getElementById("search");
   const noToDo = document.getElementById("no__to__do");
-  const todoList = document.getElementById("todoList");
+  const todoLists = document.getElementById("todoLists");
   const circle__total__lists = document.getElementById("circle__total__lists");
   const circle__completed__lists = document.getElementById(
     "circle__completed__lists"
@@ -42,8 +42,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     return;
   }
-
-  //check to list empty or not
   emptyListUi(toDoLists);
 
   function totalCompletedLists(toDoLists) {
@@ -138,7 +136,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     let confirmDelete = false;
 
     deleteBtn.addEventListener("click", async () => {
-      // let confirmDelete = confirm("Are you sure want to Delete it.");
       deleteContainer.style.display = "flex";
 
       noBtn.addEventListener("click", async () => {
@@ -190,7 +187,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
-  //UPDATE
   function updateList(completeBtn, li, p, p2, completeBtn) {
     completeBtn.addEventListener("click", async () => {
       let value = li.getAttributeNode("value").value;
@@ -215,7 +211,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
-  //shown in page...
   toDoLists.forEach((todo, indx) => {
     const li = returnLi(todo);
   });
@@ -232,8 +227,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (inputList.trim() === "") {
       alert("Add to do...");
     } else {
-      // check todo exist or not
-
       let exitTodo = toDoLists.find((list) => list.todoName === inputList);
 
       if (exitTodo) {
@@ -257,6 +250,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         storeOnLocalStorage(toDoLists);
         getFromLoalstorage();
         returnLi(list);
+
         lists_items = document.querySelectorAll("li");
 
         toDoInput.value = "";
@@ -265,7 +259,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 
-  let serach_key = "";
   const searchFun = () => {
     searchInput.addEventListener("input", async () => {
       let getData = getFromLoalstorage();
@@ -273,21 +266,17 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (searchInput.value.trim() === "") {
           // alert("Search to do...");
           notFound.style.display = "none";
-          lists_items.forEach((li, indx) => {
-            todoList_lists.appendChild(li);
-          });
 
           getData.forEach((data) => {
             returnLi(data);
           });
         } else {
-          serach_key = searchInput.value;
-
           let matchList = 0;
+
           lists_items.forEach((li) => {
             let values = li.getAttributeNode("value").value;
 
-            if (values.includes(serach_key)) {
+            if (values.includes(searchInput.value)) {
               todoList_lists.appendChild(li);
               matchList++;
               console.log("==================================", matchList);
@@ -313,22 +302,4 @@ document.addEventListener("DOMContentLoaded", async () => {
   };
 
   searchFun();
-
-  // const searchBlurFun = () => {
-  //   searchInput.addEventListener("blur", () => {
-  //     console.log(typeof searchInput.value);
-
-  //     if (searchInput.value === "") {
-  //       console.log("empty search with lists: ", lists);
-  //       lists.forEach((li) => {
-  //         todoList_lists.appendChild(li);
-  //       });
-
-  //       if (lists) {
-  //         notFound.style.display = "none";
-  //       }
-  //     }
-  //   });
-  // };
-  // searchBlurFun();
 });
